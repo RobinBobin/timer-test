@@ -1,17 +1,14 @@
-.cpu cortex-m7
 .syntax unified
-.thumb
 
 .global Reset_Handler
 
 #include "constants.h"
 
-.text
-  .word 0x20020000
-  .word Reset_Handler
-
+.section .vector-handlers, "ax"
 .thumb_func
 Reset_Handler:
+  bkpt #42
+
   mov r0, 0x30
   push {r0}
 

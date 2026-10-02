@@ -32,6 +32,11 @@ target_include_directories(${PROJECT_NAME} PRIVATE
   "${CMAKE_CURRENT_SOURCE_DIR}/Inc"
 )
 
-target_sources(${PROJECT_NAME} PRIVATE
-  "${CMAKE_CURRENT_SOURCE_DIR}/Src/main.S"
+file(
+  GLOB_RECURSE
+  ASM_SOURCES
+  RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+  "Src/*.S"
 )
+
+target_sources(${PROJECT_NAME} PRIVATE ${ASM_SOURCES})
