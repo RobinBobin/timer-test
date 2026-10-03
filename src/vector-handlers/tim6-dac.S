@@ -17,7 +17,7 @@ TIM6_DAC_Handler:
   @ Toggle GPIOB0
   mov32   r0,   GPIOB_IDR
   ldr     r1,   [r0]
-  and     r1,   1 << GPIO_IDR_0
+  and     r1,   GPIO_PIN_ON << GPIO_IDR_0
 
   cmp     r1,   0
   ite     eq

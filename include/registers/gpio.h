@@ -2,7 +2,8 @@
 #define GPIO_BSRR_BR_0  16
 #define GPIO_BSRR_VALUE 1
 
-#define GPIO_IDR_0  0
+#define GPIO_IDR_0    0
+#define GPIO_PIN_ON   1
 
 #define GPIO_MODE_INPUT   0
 #define GPIO_MODE_OUTPUT  1
