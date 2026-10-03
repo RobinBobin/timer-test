@@ -29,14 +29,14 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
-  "${CMAKE_CURRENT_SOURCE_DIR}/Inc"
+  "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
 
 file(
   GLOB_RECURSE
   ASM_SOURCES
   RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-  "Src/*.S"
+  "src/*.S"
 )
 
 target_sources(${PROJECT_NAME} PRIVATE ${ASM_SOURCES})
