@@ -11,7 +11,7 @@ Reset_Handler:
   cpsid   i
 
   mov32   r0,   SCB_VTOR
-  mov32   r1,   0x08000000
+  mov32   r1,   VECTOR_TABLE_ADDRESS
   str     r1,   [r0]
 
   #include "./inc/tim6.S"

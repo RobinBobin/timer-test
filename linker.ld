@@ -9,6 +9,7 @@ MEMORY {
 SECTIONS {
   .vector-table : {
     . = ALIGN(4);
+    VECTOR_TABLE_ADDRESS = .;
     KEEP(*(.vector-table))
     . = ALIGN(4);
   } > VECTOR_TABLE
