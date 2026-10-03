@@ -14,6 +14,7 @@ Reset_Handler:
   mov32   r1,   VECTOR_TABLE_ADDRESS
   str     r1,   [r0]
 
+  #include "./inc/gpio.S"
   #include "./inc/tim6.S"
 
   dsb

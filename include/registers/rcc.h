@@ -1,5 +1,13 @@
 #define RCC_BASE 0x58024400
 
+/* (RCC_AHB4ENR) */
+#define RCC_AHB4ENR       (RCC_BASE + 0x0E0)
+#define RCC_C1_AHB4ENR    (RCC_BASE + 0x140)
+#define RCC_C2_AHB4ENR    (RCC_BASE + 0x1A0)
+
+#define GPIOBEN           1
+#define GPIOBEN_ENABLED   (1 << GPIOBEN)
+
 /* RCC_APB1LENR */
 #define RCC_APB1LENR      (RCC_BASE + 0x0E8)
 #define RCC_C1_APB1LENR   (RCC_BASE + 0x148)
