@@ -4,7 +4,7 @@ str     r1,   [r0]
 ldr     r1,   [r0]
 
 mov32   r0,   NVIC_ISER1
-mov     r1,   1 << 22
+mov     r1,   NVIC_ISER_ENABLE << 22
 str     r1,   [r0]
 
 mov32   r0,   TIM6_DIER
