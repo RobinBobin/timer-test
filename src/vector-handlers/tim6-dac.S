@@ -30,6 +30,22 @@ TIM6_DAC_Handler:
   mov32   r0,   GPIOB_BSRR
   str     r1,   [r0]
 
+  @ Toggle GPIOE1
+  mov32   r0,   GPIOE_IDR
+  ldr     r1,   [r0]
+  and     r1,   GPIO_PIN_ON << GPIO_IDR_1
+
+  cmp     r1,   0
+  ite     eq
+  moveq   r1,   GPIO_BSRR_BS_1
+  movne   r1,   GPIO_BSRR_BR_1
+
+  mov     r2,   GPIO_BSRR_VALUE
+  lsl     r1,   r2,  r1
+
+  mov32   r0,   GPIOE_BSRR
+  str     r1,   [r0]
+
   @ Exit
   dsb
   isb

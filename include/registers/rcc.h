@@ -5,13 +5,12 @@
 #define RCC_C1_AHB4ENR    (RCC_BASE + 0x140)
 #define RCC_C2_AHB4ENR    (RCC_BASE + 0x1A0)
 
-#define GPIOBEN           1
-#define GPIOBEN_ENABLED   (1 << GPIOBEN)
+#define RCC_AHB4ENR_GPIOB_ENABLED   (1 << 1)
+#define RCC_AHB4ENR_GPIOE_ENABLED   (1 << 4)
 
 /* RCC_APB1LENR */
 #define RCC_APB1LENR      (RCC_BASE + 0x0E8)
 #define RCC_C1_APB1LENR   (RCC_BASE + 0x148)
 #define RCC_C2_APB1LENR   (RCC_BASE + 0x1A8)
 
-#define TIM6EN          4
-#define TIM6EN_ENABLED  (1 << TIM6EN)
+#define RCC_APB1LENR_TIM6_ENABLED   (1 << 4)

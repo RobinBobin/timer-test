@@ -1,5 +1,5 @@
 mov32   r0,   RCC_C1_APB1LENR
-mov     r1,   TIM6EN_ENABLED
+mov     r1,   RCC_APB1LENR_TIM6_ENABLED
 str     r1,   [r0]
 ldr     r1,   [r0]
 
