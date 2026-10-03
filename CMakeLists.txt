@@ -39,4 +39,6 @@ file(
   "src/*.S"
 )
 
+list(FILTER ASM_SOURCES EXCLUDE REGEX "src/.*/inc/.*")
+
 target_sources(${PROJECT_NAME} PRIVATE ${ASM_SOURCES})

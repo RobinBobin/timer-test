@@ -6,6 +6,7 @@
 #define TIM_DIER_UIE_ENABLED  (1 << TIM_DIER_UIE)
 #define TIM_SR_UIF            0
 #define TIM_SR_UIF_PENDING    (1 << TIM_SR_UIF)
+#define TIM_SR_UIF_CLEARED    0
 
 // TIM6
 #define TIM6_BASE   0x40001000

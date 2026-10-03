@@ -1,0 +1,2 @@
+#define SCB_BASE  0xE000E000
+#define SCB_VTOR  (SCB_BASE + 0xD08)
