@@ -15,7 +15,7 @@ TIM6_DAC_Handler:
 
   @ Toggle GPIOB0
   mov32   r0,   GPIOB_BASE
-  ldr     r1,   [r0, GPIO_IDR]
+  ldr     r1,   [r0, GPIO_IDR_OFFSET]
   and     r1,   GPIO_PIN_ON << GPIO_IDR_0
 
   cmp     r1,   0
@@ -26,11 +26,11 @@ TIM6_DAC_Handler:
   mov     r2,   GPIO_BSRR_VALUE
   lsl     r1,   r2,  r1
 
-  str     r1,   [r0, GPIO_BSRR]
+  str     r1,   [r0, GPIO_BSRR_OFFSET]
 
   @ Toggle GPIOE1
   mov32   r0,   GPIOE_BASE
-  ldr     r1,   [r0, GPIO_IDR]
+  ldr     r1,   [r0, GPIO_IDR_OFFSET]
   and     r1,   GPIO_PIN_ON << GPIO_IDR_1
 
   cmp     r1,   0
@@ -41,7 +41,7 @@ TIM6_DAC_Handler:
   mov     r2,   GPIO_BSRR_VALUE
   lsl     r1,   r2,  r1
 
-  str     r1,   [r0, GPIO_BSRR]
+  str     r1,   [r0, GPIO_BSRR_OFFSET]
 
   @ Exit
   dsb
