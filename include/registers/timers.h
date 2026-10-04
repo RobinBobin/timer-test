@@ -1,8 +1,15 @@
 /* TIM_CR1 */
 #define TIM_CR1_OFFSET  0x00
 
-#define TIM_CR1_CEN_INDEX     0
-#define TIM_CR1_CEN_ENABLED   (1 << TIM_CR1_CEN_INDEX)
+#define TIM_CR1_CEN_INDEX   0
+#define TIM_CR1_UDIS_INDEX  1
+#define TIM_CR1_URS_INDEX   2
+#define TIM_CR1_OPM_INDEX   3
+
+#define TIM_CR1_CEN_ENABLED     (1 << TIM_CR1_CEN_INDEX)
+#define TIM_CR1_UDIS_DISABLED   (1 << TIM_CR1_UDIS_INDEX)
+#define TIM_CR1_URS_ENABLED     (1 << TIM_CR1_URS_INDEX)
+#define TIM_CR1_OPM_ENABLED     (1 << TIM_CR1_OPM_INDEX)
 
 /* TIM_DIER */
 #define TIM_DIER_OFFSET   0x0C
@@ -23,7 +30,12 @@
 #define TIM_EGR_UG_INDEX    0
 #define TIM_EGR_UG_REINIT   (1 << TIM_EGR_UG_INDEX)
 
+/* TIM_PSC */
 #define TIM_PSC_OFFSET  0x28
+
+#define TIM_PSC_1MS   63999
+
+/* TIM_ARR */
 #define TIM_ARR_OFFSET  0x2C
 
 /* TIM6 */
@@ -34,3 +46,7 @@
 #define TIM6_EGR    (TIM6_BASE + TIM_EGR_OFFSET)
 #define TIM6_PSC    (TIM6_BASE + TIM_PSC_OFFSET)
 #define TIM6_ARR    (TIM6_BASE + TIM_ARR_OFFSET)
+
+/* TIM7 */
+#define TIM7_BASE   0x40001400
+#define TIM7_SR     (TIM7_BASE + TIM_SR_OFFSET)

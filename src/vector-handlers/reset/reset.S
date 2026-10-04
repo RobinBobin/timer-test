@@ -4,26 +4,12 @@
 
 #include "macros.s"
 #include "registers.h"
+#include "variables.S"
 
 .section .vector-handlers, "ax"
 .thumb_func
 Reset_Handler:
-  cpsid   i
+  #include "./inc/init.S"
 
-  mov32   r0,   SCB_VTOR
-  mov32   r1,   VECTOR_TABLE_ADDRESS
-  str     r1,   [r0]
-
-  #include "./inc/rcc.S"
-
-  #include "./inc/exti.S"
-  #include "./inc/gpio.S"
-  #include "./inc/nvic.S"
-  #include "./inc/syscfg.S"
-  #include "./inc/tim6.S"
-
-  dsb
-  isb
-  cpsie   i
-
-  b .
+.main_loop:
+  #include "./inc/main-loop.S"

@@ -9,3 +9,6 @@
 
   .org 0x00000118, 0
   .word TIM6_DAC_Handler
+
+  .org 0x0000011C, 0
+  .word TIM7_Handler

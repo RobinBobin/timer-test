@@ -15,6 +15,7 @@
 #define RCC_C2_APB1LENR   (RCC_BASE + 0x1A8)
 
 #define RCC_APB1LENR_TIM6_ENABLED   (1 << 4)
+#define RCC_APB1LENR_TIM7_ENABLED   (1 << 5)
 
 /* RCC_APB4ENR */
 #define RCC_APB4ENR     (RCC_BASE + 0x0F4)
