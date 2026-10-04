@@ -19,10 +19,4 @@ SECTIONS {
     *(.vector-handlers)
     . = ALIGN(4);
   } > VECTOR_HANDLERS
-
-  .text : {
-    . = ALIGN(4);
-    *(.text)
-    . = ALIGN(4);
-  } > FLASH1
 }
