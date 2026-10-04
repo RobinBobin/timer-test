@@ -7,7 +7,7 @@ str     r1,   [r0]
 
 @ Set GPIOB0 to output
 mov32   r0,   GPIOB_MODER
-mov32   r1,   MODIFY_BITS(
+mov     r1,   MODIFY_BITS(
                 GPIOB_MODER_RESET_VALUE,
                 GPIO_MODE_RESET,
                 GPIO_MODE_OUTPUT,

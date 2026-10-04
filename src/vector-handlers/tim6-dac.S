@@ -10,13 +10,12 @@
 TIM6_DAC_Handler:
   @ Reset UIF
   mov32   r0,   TIM6_SR
-  mov32   r1,   TIM_SR_UIF_CLEARED
+  mov     r1,   TIM_SR_UIF_CLEARED
   str     r1,   [r0]
-  ldr     r1,   [r0]
 
   @ Toggle GPIOB0
-  mov32   r0,   GPIOB_IDR
-  ldr     r1,   [r0]
+  mov32   r0,   GPIOB_BASE
+  ldr     r1,   [r0, GPIO_IDR]
   and     r1,   GPIO_PIN_ON << GPIO_IDR_0
 
   cmp     r1,   0
@@ -27,12 +26,11 @@ TIM6_DAC_Handler:
   mov     r2,   GPIO_BSRR_VALUE
   lsl     r1,   r2,  r1
 
-  mov32   r0,   GPIOB_BSRR
-  str     r1,   [r0]
+  str     r1,   [r0, GPIO_BSRR]
 
   @ Toggle GPIOE1
-  mov32   r0,   GPIOE_IDR
-  ldr     r1,   [r0]
+  mov32   r0,   GPIOE_BASE
+  ldr     r1,   [r0, GPIO_IDR]
   and     r1,   GPIO_PIN_ON << GPIO_IDR_1
 
   cmp     r1,   0
@@ -43,8 +41,7 @@ TIM6_DAC_Handler:
   mov     r2,   GPIO_BSRR_VALUE
   lsl     r1,   r2,  r1
 
-  mov32   r0,   GPIOE_BSRR
-  str     r1,   [r0]
+  str     r1,   [r0, GPIO_BSRR]
 
   @ Exit
   dsb
