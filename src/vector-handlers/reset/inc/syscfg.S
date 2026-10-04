@@ -1,0 +1,3 @@
+mov32   r0,   SYSCFG_EXTICR4
+mov     r1,   SYSCFG_EXTICR_GPIOC << SYSCFG_EXTICR4_EXTI13
+str     r1,   [r0]

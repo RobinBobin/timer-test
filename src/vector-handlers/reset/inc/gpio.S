@@ -1,11 +1,6 @@
 #include "macros.h"
 
-@ Clock GPIOB, GPIOE
-mov32   r0,   RCC_C1_AHB4ENR
-mov     r1,   RCC_AHB4ENR_GPIOB_ENABLED | RCC_AHB4ENR_GPIOE_ENABLED
-str     r1,   [r0]
-
-@ Set GPIOB0 to output
+@ Set B0 to output (green LED)
 mov32   r0,   GPIOB_MODER
 mov     r1,   MODIFY_BITS(
                 GPIOB_MODER_RESET_VALUE,
@@ -15,7 +10,17 @@ mov     r1,   MODIFY_BITS(
               )
 str     r1,   [r0]
 
-@ Set GPIOE1 to output
+@ Set C13 to input (blue button)
+mov32   r0,   GPIOC_MODER
+mov     r1,   MODIFY_BITS(
+                GPIO_MODER_RESET_VALUE,
+                GPIO_MODE_RESET,
+                GPIO_MODE_INPUT,
+                GPIO_MODER_13
+              )
+str     r1,   [r0]
+
+@ Set E1 to output (yellow LED)
 mov32   r0,   GPIOE_MODER
 mov     r1,   MODIFY_BITS(
                 GPIO_MODER_RESET_VALUE,

@@ -14,7 +14,12 @@ Reset_Handler:
   mov32   r1,   VECTOR_TABLE_ADDRESS
   str     r1,   [r0]
 
+  #include "./inc/rcc.S"
+
+  #include "./inc/exti.S"
   #include "./inc/gpio.S"
+  #include "./inc/nvic.S"
+  #include "./inc/syscfg.S"
   #include "./inc/tim6.S"
 
   dsb
