@@ -18,11 +18,7 @@ EXTI15_10_Handler:
   @ Save the button state
   mov32   r0,   GPIOC_IDR
   ldr     r1,   [r0]
-
-  tst     r1,   GPIO_PIN_ON << GPIO_IDR_13
-  ite     eq
-  moveq   r1,   BUTTON_STATE_RAW_UP
-  movne   r1,   BUTTON_STATE_RAW_DOWN
+  ubfx    r1,   r1,   GPIO_IDR_13,  1
   str     r1,   [r9, BUTTON_STATE]
 
   @ Start the timer
