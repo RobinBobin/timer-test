@@ -20,18 +20,9 @@ TIM7_Handler:
   mov     r1,   TIM7_CR1_VALUE & ~TIM_CR1_CEN_ENABLED
   str     r1,   [r0, TIM_CR1_OFFSET]
 
-  @ Manage the button state
-  ldr     r2,   [r9, BUTTON_STATE]
-
-  mov32   r0,   GPIOC_IDR
-  ldr     r1,   [r0]
-  ubfx    r1,   r1,   GPIO_IDR_13,  1
-
-  cmp     r1,   r2
-  ite     eq
-  addeq   r2,   2
-  movne   r2,   BUTTON_STATE_NONE
-  str     r2,   [r9, BUTTON_STATE]
+  @ Set the state flag
+  mov     r1,   STATE_FLAG_ON
+  str     r1,   [r9, STATE_FLAG_TIM7]
 
   @ Exit
   dsb

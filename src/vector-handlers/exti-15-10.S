@@ -2,7 +2,6 @@
 
 .global EXTI15_10_Handler
 
-#include "constants.h"
 #include "macros.s"
 #include "registers.h"
 #include "variables.S"
@@ -21,14 +20,9 @@ EXTI15_10_Handler:
   ubfx    r1,   r1,   GPIO_IDR_13,  1
   str     r1,   [r9, BUTTON_STATE]
 
-  @ Start the timer
-  mov32   r0,   TIM7_BASE
-
-  mov     r1,   TIM_EGR_UG_REINIT
-  str     r1,   [r0, TIM_EGR_OFFSET]
-
-  mov     r1,   TIM7_CR1_VALUE
-  str     r1,   [r0, TIM_CR1_OFFSET]
+  @ Set the state flag
+  mov     r1,   STATE_FLAG_ON
+  str     r1,   [r9, STATE_FLAG_BUTTON_STATE]
 
   @ Exit
   dsb

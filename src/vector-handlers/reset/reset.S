@@ -2,6 +2,7 @@
 
 .global Reset_Handler
 
+#include "constants.h"
 #include "macros.s"
 #include "registers.h"
 #include "variables.S"
@@ -13,3 +14,4 @@ Reset_Handler:
 
 .main_loop:
   #include "./inc/main-loop.S"
+  b .main_loop
