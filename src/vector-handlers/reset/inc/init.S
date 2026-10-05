@@ -19,6 +19,7 @@ str     r1,   [r9, LED_MODE]
 @ Init state flags
 mov     r1,   STATE_FLAG_OFF
 str     r1,   [r9, STATE_FLAG_BUTTON_STATE]
+str     r1,   [r9, STATE_FLAG_TIM6]
 str     r1,   [r9, STATE_FLAG_TIM7]
 
 #include "./init/rcc.S"

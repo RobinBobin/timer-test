@@ -20,7 +20,7 @@ EXTI15_10_Handler:
   ubfx    r1,   r1,   GPIO_IDR_13,  1
   str     r1,   [r9, BUTTON_STATE]
 
-  @ Set the state flag
+  @ Set STATE_FLAG_BUTTON_STATE
   mov     r1,   STATE_FLAG_ON
   str     r1,   [r9, STATE_FLAG_BUTTON_STATE]
 

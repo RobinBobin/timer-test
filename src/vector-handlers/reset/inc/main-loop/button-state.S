@@ -1,6 +1,7 @@
 @ Exit if not STATE_FLAG_BUTTON_STATE
 ldr     r1,   [r9, STATE_FLAG_BUTTON_STATE]
-cbz     r1,   .button_state_end
+cmp     r1,   STATE_FLAG_OFF
+beq     .button_state_end
 
 @ Reset STATE_FLAG_BUTTON_STATE
 mov     r1,   STATE_FLAG_OFF
@@ -31,36 +32,49 @@ addne   r1,   1
 @ Store LED_MODE
 str     r1,   [r9, LED_MODE]
 
+@ Continue if no TIM6 actions needed
+cmp     r1,   LED_MODE_MIN
+bgt     .button_state_end
+
 mov32   r0,   TIM6_BASE
 
-@ Is the timer enabled?
-ldr     r1,   [r0, TIM_CR1_OFFSET]
-ubfx    r1,   r1,   TIM_CR1_CEN_INDEX, 1
-tst     r1,   r1
+@ Start TIM6
 beq     .start_tim6
 
-@ Stop the timer
-mov     r1,   0
+@ Stop TIM6
+mov     r1,   !TIM_CR1_CEN_ENABLED
 str     r1,   [r0, TIM_CR1_OFFSET]
+
+@ Turn off leds
+mov32   r0,   GPIOB_BASE
+mov     r1,   GPIO_BSRR_VALUE << GPIO_BSRR_BR_0
+str     r1,   [r0, GPIO_BSRR_OFFSET]
+
+mov32   r0,   GPIOE_BASE
+mov     r1,   GPIO_BSRR_VALUE << GPIO_BSRR_BR_1
+str     r1,   [r0, GPIO_BSRR_OFFSET]
+
 b       .button_state_end
 
 .start_tim6:
-mov     r1,   TIM_EGR_UG_REINIT
-str     r1,   [r0, TIM_EGR_OFFSET]
+  mov   r1,   TIM_EGR_UG_REINIT
+  str   r1,   [r0, TIM_EGR_OFFSET]
 
-mov     r1,   TIM_CR1_CEN_ENABLED
-str     r1,   [r0, TIM_CR1_OFFSET]
+  mov   r1,   TIM_CR1_CEN_ENABLED
+  str   r1,   [r0, TIM_CR1_OFFSET]
 
-b       .button_state_end
+  b     .button_state_end
 
 .start_tim7:
-mov32   r0,   TIM7_BASE
+  mov32   r0,   TIM7_BASE
 
-mov     r1,   TIM_EGR_UG_REINIT
-str     r1,   [r0, TIM_EGR_OFFSET]
+  mov     r1,   TIM_EGR_UG_REINIT
+  str     r1,   [r0, TIM_EGR_OFFSET]
 
-mov     r1,   TIM7_CR1_VALUE
-str     r1,   [r0, TIM_CR1_OFFSET]
+  mov     r1,   TIM7_CR1_VALUE
+  str     r1,   [r0, TIM_CR1_OFFSET]
+
+  b       .button_state_end
 
 @ End
 .button_state_end:

@@ -20,7 +20,7 @@ TIM7_Handler:
   mov     r1,   TIM7_CR1_VALUE & ~TIM_CR1_CEN_ENABLED
   str     r1,   [r0, TIM_CR1_OFFSET]
 
-  @ Set the state flag
+  @ Set STATE_FLAG_TIM7
   mov     r1,   STATE_FLAG_ON
   str     r1,   [r9, STATE_FLAG_TIM7]
 
