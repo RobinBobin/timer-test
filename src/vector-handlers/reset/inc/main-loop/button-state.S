@@ -23,27 +23,14 @@ mov     r1,   BUTTON_STATE_NONE
 str     r1,   [r9, BUTTON_STATE]
 
 @ Safely increment LED_MODE
-ldr     r1,   [r9, LED_MODE]
-cmp     r1,   LED_MODE_MAX
+ldr     r2,   [r9, LED_MODE]
+cmp     r2,   LED_MODE_MAX
 ite     eq
-moveq   r1,   LED_MODE_OFF
-addne   r1,   1
+moveq   r2,   LED_MODE_OFF
+addne   r2,   1
 
 @ Store LED_MODE
-str     r1,   [r9, LED_MODE]
-
-@ Continue if no TIM6 actions needed
-cmp     r1,   LED_MODE_MIN
-bgt     .button_state_end
-
-mov32   r0,   TIM6_BASE
-
-@ Start TIM6
-beq     .start_tim6
-
-@ Stop TIM6
-mov     r1,   !TIM_CR1_CEN_ENABLED
-str     r1,   [r0, TIM_CR1_OFFSET]
+str     r2,   [r9, LED_MODE]
 
 @ Turn off leds
 mov32   r0,   GPIOB_BASE
@@ -54,16 +41,25 @@ mov32   r0,   GPIOE_BASE
 mov     r1,   GPIO_BSRR_VALUE << GPIO_BSRR_BR_1
 str     r1,   [r0, GPIO_BSRR_OFFSET]
 
-b       .button_state_end
+@ Save TIM6_BASE in r0
+mov32   r0,   TIM6_BASE
 
-.start_tim6:
-  mov   r1,   TIM_EGR_UG_REINIT
-  str   r1,   [r0, TIM_EGR_OFFSET]
+@ Stop TIM6
+mov     r1,   !TIM_CR1_CEN_ENABLED
+str     r1,   [r0, TIM_CR1_OFFSET]
 
-  mov   r1,   TIM_CR1_CEN_ENABLED
-  str   r1,   [r0, TIM_CR1_OFFSET]
+@ Continue if LED_MODE_OFF
+cmp   r2,   LED_MODE_OFF
+beq   .button_state_end
 
-  b     .button_state_end
+@ Start TIM6
+mov     r1,   TIM_EGR_UG_REINIT
+str     r1,   [r0, TIM_EGR_OFFSET]
+
+mov     r1,   TIM_CR1_CEN_ENABLED
+str     r1,   [r0, TIM_CR1_OFFSET]
+
+b   .button_state_end
 
 .start_tim7:
   mov32   r0,   TIM7_BASE
