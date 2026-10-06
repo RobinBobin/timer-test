@@ -7,11 +7,42 @@ beq   .tim6_end
 mov   r1,   STATE_FLAG_OFF
 str   r1,   [r9, STATE_FLAG_TIM6]
 
-@ Get LED_MODE
-ldr   r1,   [r9, LED_MODE]
+@ Init registers
+mov32   r0,   GPIOB_BASE
+mov32   r1,   GPIOE_BASE
+ldr     r2,   [r9, LED_MODE]
+
+@
+@ Save master pin state in r3
+@ Save master pin index in r4
+@
+cmp     r2,   LED_MODE_LED2
+ittee   eq
+moveq   r3,   r1
+moveq   r4,   GPIO_IDR_1
+movne   r3,   r0
+movne   r4,   GPIO_IDR_0
+ldr     r3,   [r3, GPIO_IDR_OFFSET]
+lsr     r3,   r4
+and     r3,   GPIO_PIN_ON
+
+@ Save BSRR shift to toggle master pin in r5
+mov     r5,   r4
+cmp     r3,   GPIO_PIN_ON
+it      eq
+addeq   r5,   GPIO_BSRR_BR_0
+
+@ Save GPIO_BSRR_VALUE in r6
+mov   r6,   GPIO_BSRR_VALUE
+
+@ BSRR mask to toggle master pin
+cmp     r2,   LED_MODE_LED2
+ite     eq
+lsleq   r4,   r6,   r5
+lslne   r3,   r6,   r5
 
 @ Jump table
-tbb   [pc, r1]
+tbb     [pc, r2]
 
 .tim6_jump_table:
   .byte   (.tim6_led1           -   .tim6_jump_table) / 2
@@ -20,99 +51,37 @@ tbb   [pc, r1]
   .byte   (.tim6_led1_and_led2  -   .tim6_jump_table) / 2
 
 .tim6_led1:
-  @ Handle LED1
-  mov32   r0,   GPIOB_BASE
-  mov     r2,   GPIO_IDR_0
-  bl      .tim6_get_toggling_value
-  str     r2,   [r0, GPIO_BSRR_OFFSET]
+  @ BSRR mask to turn off LED2
+  mov   r4,   GPIO_IDR_1 + GPIO_BSRR_BR_0
+  lsl   r4,   r6,   r4
 
-  @ Handle LED2
-  mov32   r0,   GPIOE_BASE
-  mov     r2,   GPIO_BSRR_VALUE << GPIO_BSRR_BR_1
-  str     r2,   [r0, GPIO_BSRR_OFFSET]
-
-  b       .tim6_end
+  b .tim6_handle_leds
 
 .tim6_led2:
-  @ Handle LED1
-  mov32   r0,   GPIOB_BASE
-  mov     r2,   GPIO_BSRR_VALUE << GPIO_BSRR_BR_0
-  str     r2,   [r0, GPIO_BSRR_OFFSET]
+  @ BSRR mask to turn off LED1
+  mov   r3,   GPIO_IDR_0 + GPIO_BSRR_BR_0
+  lsl   r3,   r6,   r3
 
-  @ Handle LED2
-  mov32   r0,   GPIOE_BASE
-  mov     r2,   GPIO_IDR_1
-  bl      .tim6_get_toggling_value
-  str     r2,   [r0, GPIO_BSRR_OFFSET]
-
-  b   .tim6_end
+  b .tim6_handle_leds
 
 .tim6_led1_or_led2:
-  b   .tim6_end
+  @ BSRR mask to toggle LED2
+  cmp     r3,   GPIO_BSRR_VALUE << GPIO_BSRR_BR_0
+  ite     eq
+  moveq   r4,   GPIO_BSRR_BS_1
+  movne   r4,   GPIO_BSRR_BR_1
+  lsl     r4,   r6,   r4
+
+  b .tim6_handle_leds
 
 .tim6_led1_and_led2:
-  mov32   r0,   GPIOB_BASE
-  mov     r2,   GPIO_IDR_0
-  mov     r3,   GPIO_IDR_1
-  bl      .tim6_get_toggling_value
-  str     r2,   [r0, GPIO_BSRR_OFFSET]
+  @ BSRR mask to toggle LED2
+  add   r5,   GPIO_IDR_1
+  lsl   r4,   r6,   r5
+  b .tim6_handle_leds
 
-  mov32   r0,   GPIOE_BASE
-  str     r3,   [r0, GPIO_BSRR_OFFSET]
-
-  b       .tim6_end
-
-.tim6_get_toggling_value:
-  @
-  @ Input:
-  @ r0 = GPIOx_BASE
-  @ r1 = LED_MODE
-  @ r2 = GPIO_IDR_x
-  @ r3 = GPIO_IDR_y if r1 eq LED_MODE_LED1_*_LED2, otherwise undefined
-  @
-  @ Output:
-  @ r2 = value to toggle GPIO_IDR_x
-  @ r3 = value to toggle GPIO_IDR_y if r1 eq LED_MODE_LED1_*_LED2, otherwise undefined
-  @
-
-  @ Get the current pin state
-  ldr   r4,   [r0, GPIO_IDR_OFFSET]
-  lsr   r4,   r2
-  ands  r4,   GPIO_PIN_ON
-
-  @ Save Z in r4
-  ite     eq
-  moveq   r4,   1
-  movne   r4,   0
-
-  @ Save GPIO_BSRR_VALUE in r5
-  mov     r5,   GPIO_BSRR_VALUE
-
-  @ Prepare r2
-  it      ne
-  addne   r2,   GPIO_BSRR_BR_0
-  lsl     r2,   r5,  r2
-
-  @ Exit if LED_MODE < LED_MODE_LED1_OR_LED2
-  cmp   r1,   LED_MODE_LED1_OR_LED2
-  it    lo
-  bxlo  lr
-
-  @ Prepare for easy comparison
-  sub   r5,   r1,   LED_MODE_LED1_OR_LED2
-  
-  @ LED_MODE_LED1_AND_LED2
-  cbz     r5,   .tim6_get_toggling_value_led1_or_led2
-  cmp     r4,   1
-  it      ne
-  addne   r3,   GPIO_BSRR_BR_0
-  lsl     r3,   r5,  r3
-
-  bx lr
-
-  .tim6_get_toggling_value_led1_or_led2:
-    nop
-
-  bx    lr
+.tim6_handle_leds:
+str     r3,   [r0, GPIO_BSRR_OFFSET]
+str     r4,   [r1, GPIO_BSRR_OFFSET]
 
 .tim6_end:
