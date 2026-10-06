@@ -3,7 +3,7 @@ mov32   r0,   TIM6_BASE
 mov     r1,   TIM_DIER_UIE_ENABLED
 str     r1,   [r0, TIM_DIER_OFFSET]
 
-mov     r1,   999
+mov     r1,   499
 str     r1,   [r0, TIM_ARR_OFFSET]
 
 mov     r1,   TIM_PSC_1MS
