@@ -16,11 +16,16 @@ str   r1,   [r8, SYST_RVR_OFFSET]
 mov   r1,   0
 str   r1,   [r8, SYST_CVR_OFFSET]
 
-@ Init button state
+@ Init button
 mov   r1,   0
 str   r1,   [r9, BUTTON_DEBOUNCE_COUNTER]
-str   r1,   [r9, BUTTON_IS_DOWN]
 
-@ Init led mode
+mov   r1,   BUTTON_STATE_NULL
+str   r1,   [r9, BUTTON_STATE]
+
+@ Init led
+mov   r1,   0
+str   r1,   [r9, LED_COUNTER]
+
 mov   r1,   LED_MODE_OFF
 str   r1,   [r9, LED_MODE]

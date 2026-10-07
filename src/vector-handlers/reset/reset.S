@@ -18,7 +18,7 @@ Reset_Handler:
 
 .main_loop:
   ldr   r1,   [r8,  SYST_CSR_OFFSET]
-  tst   r1,   SYST_TICKED
+  tst   r1,   SYST_CSR_COUNTFLAG
   beq   .main_loop
 
   #include "./inc/main-loop.S"
