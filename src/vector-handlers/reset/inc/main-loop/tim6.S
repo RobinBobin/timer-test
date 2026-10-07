@@ -1,12 +1,3 @@
-@ Exit if not STATE_FLAG_TIM6
-ldr   r1,   [r9, STATE_FLAG_TIM6]
-cmp   r1,   STATE_FLAG_OFF
-beq   .tim6_end
-
-@ Reset STATE_FLAG_TIM6
-mov   r1,   STATE_FLAG_OFF
-str   r1,   [r9, STATE_FLAG_TIM6]
-
 @ Init registers
 mov32   r0,   GPIOB_BASE
 mov32   r1,   GPIOE_BASE

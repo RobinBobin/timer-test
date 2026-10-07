@@ -1,1 +1,6 @@
-#define TIM7_CR1_VALUE  TIM_CR1_CEN_ENABLED | TIM_CR1_URS_ENABLED
+#define BUTTON_DEBOUNCE   30
+
+#define TRUE    1
+#define FALSE   0
+
+#define TIMER_1_MS   63999

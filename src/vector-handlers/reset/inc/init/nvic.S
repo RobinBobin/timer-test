@@ -1,4 +1,0 @@
-@ Enable EXTI15_10, TIM6_DAC, TIM7
-mov32   r0,   NVIC_ISER1
-mov32   r1,   NVIC_ISER_SETENA_8 | NVIC_ISER_SETENA_22 | NVIC_ISER_SETENA_23
-str     r1,   [r0]

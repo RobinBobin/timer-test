@@ -1,7 +1,4 @@
-#include "registers/exti.h"
 #include "registers/gpio.h"
-#include "registers/nvic.h"
 #include "registers/rcc.h"
 #include "registers/scb.h"
-#include "registers/syscfg.h"
-#include "registers/timers.h"
+#include "registers/syst.h"

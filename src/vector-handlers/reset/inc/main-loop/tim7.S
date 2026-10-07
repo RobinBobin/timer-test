@@ -1,11 +1,3 @@
-@ Exit if not STATE_FLAG_TIM7
-ldr     r1,   [r9, STATE_FLAG_TIM7]
-cbz     r1,   .tim7_end
-
-@ Reset STATE_FLAG_TIM7
-mov     r1,   STATE_FLAG_OFF
-str     r1,   [r9, STATE_FLAG_TIM7]
-
 @ Manage the button state
 mov32   r0,   GPIOC_IDR
 ldr     r1,   [r0]
