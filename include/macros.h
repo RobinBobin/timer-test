@@ -1,2 +1,2 @@
-#define MODIFY_BITS(VALUE, RESET, SET, SHIFT) \
-  ((VALUE) & ~((RESET) << (SHIFT)) | ((SET) << (SHIFT)))
+#define MODIFY_BITS(INITIAL_VALUE, RESET, SET) \
+  (((INITIAL_VALUE) & ~(RESET)) | (SET))

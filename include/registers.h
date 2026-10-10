@@ -1,4 +1,5 @@
 #include "registers/gpio.h"
+#include "registers/mpu.h"
 #include "registers/rcc.h"
 #include "registers/scb.h"
 #include "registers/syst.h"
