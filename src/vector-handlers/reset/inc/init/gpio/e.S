@@ -2,6 +2,7 @@
 @ E1, output, yellow LED
 @ 
 
+@ Moder
 mov32   r0,   GPIOE_BASE
 mov     r1,   MODIFY_BITS( 
                 GPIO_MODER_RESET_VALUE,
