@@ -35,5 +35,5 @@
 #define SYSCFG_CCCSR_OFFSET   0x20
 #define SYSCFG_CCCSR          (SYSCFG_BASE + SYSCFG_CCCSR_OFFSET)
 
-#define SYSCFG_CCCSR_EN     (1 << 1)
+#define SYSCFG_CCCSR_EN     (1 << 0)
 #define SYSCFG_CCCSR_READY  (1 << 8)
