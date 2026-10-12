@@ -1,6 +1,7 @@
 @ Select RMII
 mov32   r0,   SYSCFG_BASE
-mov     r1,   SYSCFG_PMCR_EPIS_RMII
+ldr     r1,   [r0, SYSCFG_PMCR_OFFSET]
+orr     r1,   SYSCFG_PMCR_EPIS_RMII << SYSCFG_PMCR_EPIS_OFFSET
 str     r1,   [r0, SYSCFG_PMCR_OFFSET]
 ldr     r1,   [r0, SYSCFG_PMCR_OFFSET]
 

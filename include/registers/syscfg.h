@@ -7,7 +7,6 @@
 /* PMCR_EPIS */
 #define SYSCFG_PMCR_EPIS_OFFSET   21
 
-#define SYSCFG_PMCR_EPIS_MII      0
 #define SYSCFG_PMCR_EPIS_RMII     4
 
 /* EXTICR */
