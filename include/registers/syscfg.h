@@ -5,9 +5,7 @@
 #define SYSCFG_PMCR         (SYSCFG_BASE + SYSCFG_PMCR_OFFSET)
 
 /* PMCR_EPIS */
-#define SYSCFG_PMCR_EPIS_OFFSET   21
-
-#define SYSCFG_PMCR_EPIS_RMII     4
+#define SYSCFG_PMCR_EPIS_RMII   (4 << 21)
 
 /* EXTICR */
 #define SYSCFG_EXTICR_GPIOA   0
