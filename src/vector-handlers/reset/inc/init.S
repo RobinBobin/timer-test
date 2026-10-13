@@ -5,6 +5,7 @@ cpsid   i
 #include "./init/gpio.S"
 #include "./init/pwr.S"
 #include "./init/syscfg.S"
+#include "./init/eth.S"
 
 dsb
 isb

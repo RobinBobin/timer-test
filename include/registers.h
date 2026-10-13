@@ -1,3 +1,4 @@
+#include "registers/eth.h"
 #include "registers/gpio.h"
 #include "registers/mpu.h"
 #include "registers/pwr.h"
