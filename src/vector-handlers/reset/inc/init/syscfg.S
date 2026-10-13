@@ -4,7 +4,6 @@ mov32   r0,   SYSCFG_BASE
 ldr     r1,   [r0, SYSCFG_PMCR_OFFSET]
 orr     r1,   SYSCFG_PMCR_EPIS_RMII
 str     r1,   [r0, SYSCFG_PMCR_OFFSET]
-ldr     r1,   [r0, SYSCFG_PMCR_OFFSET]
 
 @ Enable compensation cell
 mov     r1,   SYSCFG_CCCSR_EN
