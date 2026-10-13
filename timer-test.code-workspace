@@ -6,6 +6,10 @@
     }
   ],
   "settings": {
+    "[cpp]": {
+      "editor.defaultFormatter": null,
+      "editor.formatOnSave": false
+    },
     "stm32cube-ide-clangd.path": "cube",
     "stm32cube-ide-clangd.arguments": [
       "starm-clangd",
