@@ -1,1 +1,1 @@
-mov32   r0,   ETH_BASE
+#include "eth/dma.S"
