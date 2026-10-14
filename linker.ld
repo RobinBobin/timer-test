@@ -1,9 +1,10 @@
 ENTRY(Reset_Handler)
 
 MEMORY {
-  VECTOR_TABLE    (r)   : ORIGIN = 0x08000000, LENGTH = 0x2A0
-  VECTOR_HANDLERS (rx)  : ORIGIN = 0x080002A0, LENGTH = 0x2900
-  FLASH1          (rx)  : ORIGIN = 0x08002BA0, LENGTH = 1037408
+  VECTOR_TABLE      (r)   :   ORIGIN = 0x08000000, LENGTH = 0x2A0
+  VECTOR_HANDLERS   (rx)  :   ORIGIN = 0x080002A0, LENGTH = 0x2900
+  FLASH1            (rx)  :   ORIGIN = 0x08002BA0, LENGTH = 1037408
+  ETH_SECTION       (rw)  :   ORIGIN = 0x30000000, LENGTH = 4 * (16 + 2048)
 }
 
 SECTIONS {
@@ -19,4 +20,10 @@ SECTIONS {
     *(.vector-handlers)
     . = ALIGN(4);
   } > VECTOR_HANDLERS
+
+  .eth-section (NOLOAD) : {
+    ETH_SECTION_ADDRESS = .;
+    . += LENGTH(ETH_SECTION);
+    ETH_SECTION_SIZE = SIZEOF(.eth-section);
+  } > ETH_SECTION
 }
