@@ -17,8 +17,11 @@
 /* DMAMR_DA */
 #define ETH_DMAMR_DA_FIXED  (1 << 1)
 
-#define ETH_DMAMR_PACK(INTM, TXPR, DA)  \
-  ((INTM) | (TXPR) | (DA))
+/* DMAMR_SWR*/
+#define ETH_DMAMR_SWR   (1 << 0)
+
+#define ETH_DMAMR_PACK(INTM, TXPR, DA, SWR)  \
+  ((INTM) | (TXPR) | (DA) | (SWR))
 
 ///////////////////////////////////////////////////////////////////////////////
 
