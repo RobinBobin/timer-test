@@ -24,20 +24,26 @@ mov32   r0,   ETH_BASE
   bl      .mac_configuration_wait_mii
 
   @ Get speed and duplex
-  ldr     r1,   [r0, ETH_MACMDIODR_OFFSET]
+  ldr   r1,   [r0, ETH_MACMDIODR_OFFSET]
 
   @ Speed
-  ubfx    r2,   r1,   LAN8742A_PSCSR_SI_100BASE_TX_OFFSET,    1
-  lsl     r2,   ETH_MACCR_FES_OFFSET
+  ubfx  r2,   r1,   LAN8742A_PSCSR_SI_100BASE_TX_OFFSET,    1
+  lsl   r2,   ETH_MACCR_FES_OFFSET
 
   @ Duplex
-  ubfx    r3,   r1,   LAN8742A_PSCSR_SI_FULL_DUPLEX_OFFSET,   1
-  lsl     r3,   ETH_MACCR_DM_OFFSET
+  ubfx  r3,   r1,   LAN8742A_PSCSR_SI_FULL_DUPLEX_OFFSET,   1
+  lsl   r3,   ETH_MACCR_DM_OFFSET
 
   @ Set configuration
-  mov32   r0,   ETH_MACCR
+  mov   r1,   ETH_MACCR_PACK(
+                ETH_MACCR_IPC_DISABLED,
+                ETH_MACCR_TX_ENABLED
+              )
+  orr   r1,   r2
+  orr   r1,   r3
+  str   r1,   [r0, ETH_MACCR_OFFSET]
 
-  b       .mac_configuration_end
+  b     .mac_configuration_end
 
 .mac_configuration_wait_mii:
   ldr   r1,   [r0, ETH_MACMDIOAR_OFFSET]
