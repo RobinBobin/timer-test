@@ -1,5 +1,6 @@
 #include "registers/eth.h"
 #include "registers/gpio.h"
+#include "registers/lan8742a.h"
 #include "registers/mpu.h"
 #include "registers/pwr.h"
 #include "registers/rcc.h"

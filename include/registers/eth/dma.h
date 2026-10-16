@@ -195,3 +195,27 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 /* ETH_DMACMFCR */
+
+///////////////////////////////////////////////////////////////////////////////
+
+/* ETH_DMA_TDES2_IOC */
+#define ETH_DMA_TDES2_IOC_ENABLE    1
+#define ETH_DMA_TDES2_IOC_DISABLE   0
+
+/* ETH_DMA_TDES2_TTS */
+#define ETH_DMA_TDES2_TTS_ENABLE    1
+#define ETH_DMA_TDES2_TTS_DISABLE   0
+
+/* ETH_DMA_TDES2_PACK */
+#define ETH_DMA_TDES2_PACK(IOC, TTSE, B2L, HL_OR_B1L)   \
+  (                           \
+      ((IOC)        <<  31)   \
+    | ((TTSE)       <<  30)   \
+    | ((B2L)        <<  16)   \
+    | ((HL_OR_B1L)  <<  0)    \
+  )
+
+///////////////////////////////////////////////////////////////////////////////
+
+/* ETH_DMA_TDES3_OWN */
+#define ETH_DMA_TDES3_OWN   (1 << 31)
