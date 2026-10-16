@@ -47,7 +47,7 @@
 
 /* ETH_DMACCR */
 #define ETH_DMACCR_OFFSET   0x1100
-#define ETH_DMACCR          (ETH_BASE + ETH_DMACCR)
+#define ETH_DMACCR          (ETH_BASE + ETH_DMACCR_OFFSET)
 
 /* ETH_DMACCR_DSL */
 #define ETH_DMACCR_DSL_OFFSET   18
