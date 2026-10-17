@@ -2,7 +2,7 @@
 
 /* ETH_DMAMR */
 #define ETH_DMAMR_OFFSET  0x1000
-#define ETH_DMAMR         (ETH_BASE + 0x1000)
+#define ETH_DMAMR         (ETH_BASE + ETH_DMAMR_OFFSET)
 
 /* ETH_DMAMR_INTM */
 #define ETH_DMAMR_INTM_OFFSET   16
@@ -149,7 +149,7 @@
 
 /* ETH_DMACSR */
 #define ETH_DMACSR_OFFSET   0x1160
-#define ETH_DMACSR          (ETH_BASE + ETH_DMACSR)
+#define ETH_DMACSR          (ETH_BASE + ETH_DMACSR_OFFSET)
 
 #define ETH_DMACSR_RESET_MASK   0xFDC7
 

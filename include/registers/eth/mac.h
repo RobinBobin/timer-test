@@ -93,3 +93,21 @@
 
 /* ETH_MACMDIODR_MD_MASK */
 #define ETH_MACMDIODR_MD_MASK   0xFFFFUL
+
+///////////////////////////////////////////////////////////////////////////////
+
+/* ETH_MACA0HR */
+#define ETH_MACA0HR_OFFSET  0x0300
+#define ETH_MACA0HR         (ETH_BASE + ETH_MACA0HR_OFFSET)
+
+///////////////////////////////////////////////////////////////////////////////
+
+/* ETH_MACAxLR */
+#define ETH_MACAxLR_OFFSET(X) \
+  (0x0304 + 0x8 * (X))
+
+#define ETH_MACAxLR(X) \
+  (ETH_BASE + ETH_MACAxLR_OFFSET((X)))
+
+#define ETH_MACA0LR_OFFSET  ETH_MACAxLR_OFFSET(0)
+#define ETH_MACA0LR         ETH_MACAxLR(0)
