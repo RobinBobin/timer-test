@@ -23,7 +23,7 @@ str     r1,   [r0]
 
 @ Set channel Tx control value
 mov32   r0,   ETH_DMACTXCR
-mov     r1,   ETH_DMACTXCR_PACK(
+mov32   r1,   ETH_DMACTXCR_PACK(
                 ETH_DMACTXCR_TXPBL_8,
                 ETH_DMACTXCR_START
               )
