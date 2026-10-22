@@ -1,4 +1,4 @@
-#define TIMER_1_MS   63999
+#define TIMER_1_MS   7999
 
 /* Button */
 #define BUTTON_STATE_NULL   -1

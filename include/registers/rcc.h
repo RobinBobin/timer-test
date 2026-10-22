@@ -3,12 +3,30 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 /* RCC_CR */
-#define RCC_CR_OFFSET 0x000
+#define RCC_CR_OFFSET   0x000
+#define RCC_CR          (RCC_BASE + RCC_CR_OFFSET)
 
 #define RCC_CR_RESET_VALUE  0x00000001
 
-#define RCC_CR_CSION    (1 << 7)
-#define RCC_CR_CSIRDY   (1 << 8)
+/* RCC_CR_HSEBYP */
+#define RCC_CR_HSEBYP_OFFSET  18
+#define RCC_CR_HSEBYP         (1 << RCC_CR_HSEBYP_OFFSET)
+
+/* RCC_CR_HSERDY */
+#define RCC_CR_HSERDY_OFFSET  17
+#define RCC_CR_HSERDY         (1 << RCC_CR_HSERDY_OFFSET)
+
+/* RCC_CR_HSEON */
+#define RCC_CR_HSEON_OFFSET   16
+#define RCC_CR_HSEON          (1 << RCC_CR_HSEON_OFFSET)
+
+/* RCC_CR_CSIRDY */
+#define RCC_CR_CSIRDY_OFFSET  8
+#define RCC_CR_CSIRDY         (1 << RCC_CR_CSIRDY_OFFSET)
+
+/* RCC_CR_CSION */
+#define RCC_CR_CSION_OFFSET   7
+#define RCC_CR_CSION          (1 << RCC_CR_CSION_OFFSET)
 
 ///////////////////////////////////////////////////////////////////////////////
 

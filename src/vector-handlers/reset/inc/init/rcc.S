@@ -1,27 +1,31 @@
 mov32   r0,   RCC_BASE
 
 
-@ Clock CSI
-mov   r1,   RCC_CR_RESET_VALUE | RCC_CR_CSION
-str   r1,   [r0, RCC_CR_OFFSET]
+@ Clock HSE and CSI
+mov32   r1,   RCC_CR_RESET_VALUE  \
+                | RCC_CR_HSEBYP   \
+                | RCC_CR_HSEON    \
+                | RCC_CR_CSION
+str     r1,   [r0, RCC_CR_OFFSET]
 
-.rcc_csirdy:
-  ldr   r1,   [r0, RCC_CR_OFFSET]
-  tst   r1,   RCC_CR_CSIRDY
-  beq   .rcc_csirdy
+.rcc_cr_rdy:
+  ldr     r1,   [r0, RCC_CR_OFFSET]
+  mov32   r2,   RCC_CR_HSERDY | RCC_CR_CSIRDY
+  tst     r1,   r2
+  beq     .rcc_cr_rdy
 
 
 @ Configure MCO2 and SW
-mov   r1,   RCC_CFGR_MCO2SEL_SYS_CK << RCC_CFGR_MCO2SEL_OFFSET  \
-              | RCC_CFGR_MCO2PRE_15 << RCC_CFGR_MCO2PRE_OFFSET  \
-              | RCC_CFGR_SW_HSI_CK << RCC_CFGR_SW_OFFSET
-str   r1,   [r0,  RCC_CFGR_OFFSET]
+mov32   r1,   RCC_CFGR_MCO2SEL_SYS_CK << RCC_CFGR_MCO2SEL_OFFSET  \
+                | RCC_CFGR_MCO2PRE_15 << RCC_CFGR_MCO2PRE_OFFSET  \
+                | RCC_CFGR_SW_HSE_CK << RCC_CFGR_SW_OFFSET
+str     r1,   [r0,  RCC_CFGR_OFFSET]
 
 .rcc_sws:
   ldr   r1,   [r0, RCC_CFGR_OFFSET]
   lsr   r1,   RCC_CFGR_SWS_OFFSET
-  and   r1,   RCC_CFGR_SW_HSI_CK
-  cmp   r1,   RCC_CFGR_SW_HSI_CK
+  and   r1,   RCC_CFGR_SWS_MASK
+  cmp   r1,   RCC_CFGR_SW_HSE_CK
   bne   .rcc_sws
 
 
