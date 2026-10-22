@@ -12,6 +12,93 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 
+/* RCC_CFGR */
+#define RCC_CFGR_OFFSET   0x010
+#define RCC_CFGR          (RCC_BASE + RCC_CFGR_OFFSET)
+
+/* RCC_CFGR_MCO2SEL */
+#define RCC_CFGR_MCO2SEL_OFFSET   29
+
+#define RCC_CFGR_MCO2SEL_SYS_CK     0
+#define RCC_CFGR_MCO2SEL_PLL2_P_CK  1
+#define RCC_CFGR_MCO2SEL_HSE_CK     2
+#define RCC_CFGR_MCO2SEL_PLL1_P_CK  3
+#define RCC_CFGR_MCO2SEL_CSI_CK     4
+#define RCC_CFGR_MCO2SEL_LSI_CK     5
+
+/* RCC_CFGR_MCO2PRE */
+#define RCC_CFGR_MCO2PRE_OFFSET   25
+
+#define RCC_CFGR_MCO2PRE_DISABLED   0
+#define RCC_CFGR_MCO2PRE_1          1
+#define RCC_CFGR_MCO2PRE_2          2
+#define RCC_CFGR_MCO2PRE_3          3
+#define RCC_CFGR_MCO2PRE_4          4
+#define RCC_CFGR_MCO2PRE_5          5
+#define RCC_CFGR_MCO2PRE_6          6
+#define RCC_CFGR_MCO2PRE_7          7
+#define RCC_CFGR_MCO2PRE_8          8
+#define RCC_CFGR_MCO2PRE_9          9
+#define RCC_CFGR_MCO2PRE_10         10
+#define RCC_CFGR_MCO2PRE_11         11
+#define RCC_CFGR_MCO2PRE_12         12
+#define RCC_CFGR_MCO2PRE_13         13
+#define RCC_CFGR_MCO2PRE_14         14
+#define RCC_CFGR_MCO2PRE_15         15
+
+/* RCC_CFGR_MCO1SEL */
+#define RCC_CFGR_MCO1SEL_OFFSET   22
+
+#define RCC_CFGR_MCO1SEL_HSI_CK     0
+#define RCC_CFGR_MCO1SEL_LSE_CK     1
+#define RCC_CFGR_MCO1SEL_HSE_CK     2
+#define RCC_CFGR_MCO1SEL_PLL1_Q_CK  3
+#define RCC_CFGR_MCO1SEL_HSI48_CK   4
+
+/* RCC_CFGR_MCO1PRE */
+#define RCC_CFGR_MCO1PRE_OFFSET   18
+
+#define RCC_CFGR_MCO1PRE_DISABLED   0
+#define RCC_CFGR_MCO1PRE_1          1
+#define RCC_CFGR_MCO1PRE_2          2
+#define RCC_CFGR_MCO1PRE_3          3
+#define RCC_CFGR_MCO1PRE_4          4
+#define RCC_CFGR_MCO1PRE_5          5
+#define RCC_CFGR_MCO1PRE_6          6
+#define RCC_CFGR_MCO1PRE_7          7
+#define RCC_CFGR_MCO1PRE_8          8
+#define RCC_CFGR_MCO1PRE_9          9
+#define RCC_CFGR_MCO1PRE_10         10
+#define RCC_CFGR_MCO1PRE_11         11
+#define RCC_CFGR_MCO1PRE_12         12
+#define RCC_CFGR_MCO1PRE_13         13
+#define RCC_CFGR_MCO1PRE_14         14
+#define RCC_CFGR_MCO1PRE_15         15
+
+/* RCC_CFGR_SWS */
+#define RCC_CFGR_SWS_OFFSET   3
+#define RCC_CFGR_SWS_MASK     7
+
+/* RCC_CFGR_SW */
+#define RCC_CFGR_SW_OFFSET  0
+
+#define RCC_CFGR_SW_HSI_CK      0
+#define RCC_CFGR_SW_CSI_CK      1
+#define RCC_CFGR_SW_HSE_CK      2
+#define RCC_CFGR_SW_PLL1_P_CK   3
+
+/* RCC_CFGR_PACK */
+#define RCC_CFGR_PACK(MCO2SEL, MCO2PRE, MCO1SEL, MCO1PRE, SW)   \
+  (                                                             \
+      ((MCO2SEL)  <<  RCC_CFGR_MCO2SEL_OFFSET)                  \
+    | ((MCO2PRE)  <<  RCC_CFGR_MCO2PRE_OFFSET)                  \
+    | ((MCO1SEL)  <<  RCC_CFGR_MCO1SEL_OFFSET)                  \
+    | ((MCO1PRE)  <<  RCC_CFGR_MCO1PRE_OFFSET)                  \
+    | ((SW)       <<  RCC_CFGR_SW_OFFSET)                       \
+  )
+
+///////////////////////////////////////////////////////////////////////////////
+
 /* RCC_AHB1ENR */
 #define RCC_AHB1ENR_OFFSET      0x0D8
 #define RCC_C1_AHB1ENR_OFFSET   0x138
