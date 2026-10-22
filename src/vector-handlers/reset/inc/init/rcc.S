@@ -16,9 +16,9 @@ str     r1,   [r0, RCC_CR_OFFSET]
 
 
 @ Configure MCO2 and SW
-mov32   r1,   RCC_CFGR_MCO2SEL_SYS_CK << RCC_CFGR_MCO2SEL_OFFSET  \
-                | RCC_CFGR_MCO2PRE_15 << RCC_CFGR_MCO2PRE_OFFSET  \
-                | RCC_CFGR_SW_HSE_CK << RCC_CFGR_SW_OFFSET
+mov32   r1,   RCC_CFGR_MCO2SEL_SYS_CK   \
+                | RCC_CFGR_MCO2PRE_15   \
+                | RCC_CFGR_SW_HSE_CK
 str     r1,   [r0,  RCC_CFGR_OFFSET]
 
 .rcc_sws:
