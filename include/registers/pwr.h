@@ -2,12 +2,6 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 
-#define PWR_VOS3  1
-#define PWR_VOS2  2
-#define PWR_VOS1  3
-
-///////////////////////////////////////////////////////////////////////////////
-
 /* PWR_CSR1 */
 #define PWR_CSR1_OFFSET   0x004
 #define PWR_CSR1          (PWR_BASE + PWR_CSR1_OFFSET)
@@ -15,11 +9,9 @@
 /* PWR_CSR1_ACTVOS */
 #define PWR_CSR1_ACTVOS_OFFSET  14
 
-#define PWR_CSR1_ACTVOS_MASK  (3 << PWR_CSR1_ACTVOS_OFFSET)
-
-#define PWR_CSR1_ACTVOS_VOS3  (PWR_VOS3 << PWR_CSR1_ACTVOS_OFFSET)
-#define PWR_CSR1_ACTVOS_VOS2  (PWR_VOS2 << PWR_CSR1_ACTVOS_OFFSET)
-#define PWR_CSR1_ACTVOS_VOS1  (PWR_VOS1 << PWR_CSR1_ACTVOS_OFFSET)
+#define PWR_CSR1_ACTVOS_VOS3  (1 << PWR_CSR1_ACTVOS_OFFSET)
+#define PWR_CSR1_ACTVOS_VOS2  (2 << PWR_CSR1_ACTVOS_OFFSET)
+#define PWR_CSR1_ACTVOS_VOS1  (3 << PWR_CSR1_ACTVOS_OFFSET)
 
 /* PWR_CSR1_ACTVOSRDY */
 #define PWR_CSR1_ACTVOSRDY_OFFSET   13
@@ -52,6 +44,6 @@
 /* PWR_D3CR_VOS */
 #define PWR_D3CR_VOS_OFFSET   14
 
-#define PWR_D3CR_VOS_VOS3   (PWR_VOS3 << PWR_D3CR_VOS_OFFSET)
-#define PWR_D3CR_VOS_VOS2   (PWR_VOS2 << PWR_D3CR_VOS_OFFSET)
-#define PWR_D3CR_VOS_VOS1   (PWR_VOS1 << PWR_D3CR_VOS_OFFSET)
+#define PWR_D3CR_VOS_VOS3   (1 << PWR_D3CR_VOS_OFFSET)
+#define PWR_D3CR_VOS_VOS2   (2 << PWR_D3CR_VOS_OFFSET)
+#define PWR_D3CR_VOS_VOS1   (3 << PWR_D3CR_VOS_OFFSET)

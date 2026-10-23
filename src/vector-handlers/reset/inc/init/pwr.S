@@ -26,7 +26,7 @@ b     .pwr_end
   ldr   r1,   [r0, PWR_CSR1_OFFSET]
   tst   r1,   PWR_CSR1_ACTVOSRDY
   beq   .pwr_actvosrdy
-  and   r1,   PWR_CSR1_ACTVOS_MASK
+  and   r1,   r2
   cmp   r1,   r2
   bne   .pwr_actvosrdy
   bx lr
