@@ -31,4 +31,5 @@ b     .pwr_end
   bne   .pwr_actvosrdy
   bx lr
 
+
 .pwr_end:

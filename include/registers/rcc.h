@@ -8,6 +8,14 @@
 
 #define RCC_CR_RESET_VALUE  0x00000001
 
+/* RCC_CR_PLL1RDY */
+#define RCC_CR_PLL1RDY_OFFSET   25
+#define RCC_CR_PLL1RDY          (1 << RCC_CR_PLL1RDY_OFFSET)
+
+/* RCC_CR_PLL1ON */
+#define RCC_CR_PLL1ON_OFFSET  24
+#define RCC_CR_PLL1ON         (1 << RCC_CR_PLL1ON_OFFSET)
+
 /* RCC_CR_HSEBYP */
 #define RCC_CR_HSEBYP_OFFSET  18
 #define RCC_CR_HSEBYP         (1 << RCC_CR_HSEBYP_OFFSET)
@@ -119,6 +127,18 @@
       | (MCO1PRE)   \
       | (SW)        \
   )
+
+///////////////////////////////////////////////////////////////////////////////
+
+#include "rcc/pllckselr.h"
+
+///////////////////////////////////////////////////////////////////////////////
+
+#include "rcc/pllcfgr.h"
+
+///////////////////////////////////////////////////////////////////////////////
+
+#include "rcc/pll1divr.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 
