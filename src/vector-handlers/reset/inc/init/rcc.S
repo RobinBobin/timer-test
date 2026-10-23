@@ -23,9 +23,8 @@ str     r1,   [r0,  RCC_CFGR_OFFSET]
 
 .rcc_sws:
   ldr   r1,   [r0, RCC_CFGR_OFFSET]
-  lsr   r1,   RCC_CFGR_SWS_OFFSET
-  and   r1,   RCC_CFGR_SWS_MASK
-  cmp   r1,   RCC_CFGR_SW_HSE_CK
+  and   r1,   RCC_CFGR_SWS_HSE_CK
+  cmp   r1,   RCC_CFGR_SWS_HSE_CK
   bne   .rcc_sws
 
 
