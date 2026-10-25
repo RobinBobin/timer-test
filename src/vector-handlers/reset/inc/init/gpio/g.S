@@ -15,8 +15,8 @@ mov     r1,   MODIFY_BITS(
 str     r1,   [r0, GPIO_MODER_OFFSET]
 
 @ OSPEEDR
-mov   r1,   GPIO_SPEED_HIGH << GPIO_OSPEEDR11       \
-              | GPIO_SPEED_HIGH << GPIO_OSPEEDR13
+mov   r1,   GPIO_SPEED_VERY_HIGH << GPIO_OSPEEDR11      \
+              | GPIO_SPEED_VERY_HIGH << GPIO_OSPEEDR13
 str   r1,   [r0, GPIO_OSPEEDR_OFFSET]
 
 @ AFRH

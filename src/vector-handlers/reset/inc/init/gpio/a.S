@@ -18,15 +18,10 @@ mov32   r1,   MODIFY_BITS(
 str     r1,   [r0, GPIO_MODER_OFFSET]
 
 @ OSPEEDR
-mov32   r1,   MODIFY_BITS(
-                GPIOA_OSPEEDR_RESET_VALUE,
-                GPIO_SPEED_VERY_HIGH << GPIO_OSPEEDR1
-                  | GPIO_SPEED_VERY_HIGH << GPIO_OSPEEDR2
-                  | GPIO_SPEED_VERY_HIGH << GPIO_OSPEEDR7,
-                GPIO_SPEED_HIGH << GPIO_OSPEEDR1
-                  | GPIO_SPEED_HIGH << GPIO_OSPEEDR2
-                  | GPIO_SPEED_HIGH << GPIO_OSPEEDR7
-              )
+mov32   r1,   GPIOA_OSPEEDR_RESET_VALUE                   \
+                | GPIO_SPEED_VERY_HIGH << GPIO_OSPEEDR1   \
+                | GPIO_SPEED_VERY_HIGH << GPIO_OSPEEDR2   \
+                | GPIO_SPEED_VERY_HIGH << GPIO_OSPEEDR7
 str     r1,   [r0, GPIO_OSPEEDR_OFFSET]
 
 @ PUPDR

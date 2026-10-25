@@ -1,8 +1,15 @@
 mov32   r0,   ETH_BASE
 
+
+@ Reset PHY
+
+
+
+
 .mac_configuration_read_bsr:
   mov32   r1,   ETH_MACMDIOAR_PACK(
                   LAN8742A_BSR,
+                  ETH_MACMDIOAR_CR_102,
                   ETH_MACMDIOAR_GOC_READ
                 )
   str     r1,   [r0, ETH_MACMDIOAR_OFFSET]
@@ -18,6 +25,7 @@ mov32   r0,   ETH_BASE
   @ Read LAN8742A_PSCSR
   mov32   r1,   ETH_MACMDIOAR_PACK(
                   LAN8742A_PSCSR,
+                  ETH_MACMDIOAR_CR_102,
                   ETH_MACMDIOAR_GOC_READ
                 )
   str     r1,   [r0, ETH_MACMDIOAR_OFFSET]

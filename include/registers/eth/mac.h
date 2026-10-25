@@ -70,19 +70,37 @@
 #define ETH_MACMDIOAR_OFFSET  0x0200
 #define ETH_MACMDIOAR         (ETH_BASE + ETH_MACMDIOAR_OFFSET)
 
+/* ETH_MACMDIOAR_RDA */
+#define ETH_MACMDIOAR_RDA_OFFSET  16
+
+/* ETH_MACMDIOAR_CR */
+#define ETH_MACMDIOAR_CR_OFFSET   8
+
+#define ETH_MACMDIOAR_CR_42   (0UL  <<  ETH_MACMDIOAR_CR_OFFSET)
+#define ETH_MACMDIOAR_CR_62   (1UL  <<  ETH_MACMDIOAR_CR_OFFSET)
+#define ETH_MACMDIOAR_CR_16   (2UL  <<  ETH_MACMDIOAR_CR_OFFSET)
+#define ETH_MACMDIOAR_CR_26   (3UL  <<  ETH_MACMDIOAR_CR_OFFSET)
+#define ETH_MACMDIOAR_CR_102  (4UL  <<  ETH_MACMDIOAR_CR_OFFSET)
+#define ETH_MACMDIOAR_CR_124  (5UL  <<  ETH_MACMDIOAR_CR_OFFSET)
+
 /* ETH_MACMDIOAR_GOC */
-#define ETH_MACMDIOAR_GOC_WRITE   1UL
-#define ETH_MACMDIOAR_GOC_READ    3UL
+#define ETH_MACMDIOAR_GOC_OFFSET  2
+
+#define ETH_MACMDIOAR_GOC_WRITE   (1UL  <<  ETH_MACMDIOAR_GOC_OFFSET)
+#define ETH_MACMDIOAR_GOC_READ    (3UL  <<  ETH_MACMDIOAR_GOC_OFFSET)
 
 /* ETH_MACMDIOAR_MB */
-#define ETH_MACMDIOAR_MB  1UL
+#define ETH_MACMDIOAR_MB_OFFSET   0
+
+#define ETH_MACMDIOAR_MB  (1UL  <<  ETH_MACMDIOAR_MB_OFFSET)
 
 /* ETH_MACMDIOAR_PACK */
-#define ETH_MACMDIOAR_PACK(RDA, GOC)  \
-  (                                   \
-      ((RDA)              <<  16)     \
-    | ((GOC)              <<  2)      \
-    | (ETH_MACMDIOAR_MB   <<  0)      \
+#define ETH_MACMDIOAR_PACK(RDA, CR, GOC)  \
+  (                                       \
+    ((RDA) << ETH_MACMDIOAR_RDA_OFFSET)   \
+      | (CR)                              \
+      | (GOC)                             \
+      | (ETH_MACMDIOAR_MB)                \
   )
 
 ///////////////////////////////////////////////////////////////////////////////
