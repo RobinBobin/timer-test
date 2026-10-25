@@ -10,8 +10,8 @@ mov32   r1,   VECTOR_TABLE_ADDRESS
 str     r1,   [r0]
 
 @ SysTick 1 ms
-mov   r1,   TIMER_1_MS
-str   r1,   [r8, SYST_RVR_OFFSET]
+mov32   r1,   TIMER_1_MS
+str     r1,   [r8, SYST_RVR_OFFSET]
 
 mov   r1,   0
 str   r1,   [r8, SYST_CVR_OFFSET]

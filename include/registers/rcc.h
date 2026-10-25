@@ -130,6 +130,25 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 
+/* RCC_D1CFGR */
+#define RCC_D1CFGR_OFFSET   0x018
+#define RCC_D1CFGR          (RCC_BASE + RCC_D1CFGR_OFFSET)
+
+/* RCC_D1CFGR_HPRE */
+#define RCC_D1CFGR_HPRE_OFFSET  0
+
+#define RCC_D1CFGR_HPRE_1     (0    <<  RCC_D1CFGR_HPRE_OFFSET)
+#define RCC_D1CFGR_HPRE_2     (8    <<  RCC_D1CFGR_HPRE_OFFSET)
+#define RCC_D1CFGR_HPRE_4     (9    <<  RCC_D1CFGR_HPRE_OFFSET)
+#define RCC_D1CFGR_HPRE_8     (10   <<  RCC_D1CFGR_HPRE_OFFSET)
+#define RCC_D1CFGR_HPRE_16    (11   <<  RCC_D1CFGR_HPRE_OFFSET)
+#define RCC_D1CFGR_HPRE_64    (12   <<  RCC_D1CFGR_HPRE_OFFSET)
+#define RCC_D1CFGR_HPRE_128   (13   <<  RCC_D1CFGR_HPRE_OFFSET)
+#define RCC_D1CFGR_HPRE_256   (14   <<  RCC_D1CFGR_HPRE_OFFSET)
+#define RCC_D1CFGR_HPRE_512   (15   <<  RCC_D1CFGR_HPRE_OFFSET)
+
+///////////////////////////////////////////////////////////////////////////////
+
 #include "rcc/pllckselr.h"
 
 ///////////////////////////////////////////////////////////////////////////////

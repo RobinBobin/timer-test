@@ -1,4 +1,5 @@
 #include "registers/eth.h"
+#include "registers/flash.h"
 #include "registers/gpio.h"
 #include "registers/lan8742a.h"
 #include "registers/mpu.h"

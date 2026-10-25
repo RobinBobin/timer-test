@@ -20,7 +20,7 @@ mov32   r1,   RCC_PLLCFGR_DIVP1EN           \
                 | RCC_PLLCFGR_PLL1VCOSEL_H
 str     r1,   [r0, RCC_PLLCFGR_OFFSET]
 
-mov   r1,   RCC_PLL1DIVR_DIVN1_32 | RCC_PLL1DIVR_DIVP1_4
+mov   r1,   RCC_PLL1DIVR_DIVN1_98 | RCC_PLL1DIVR_DIVP1_2
 str   r1,   [r0, RCC_PLL1DIVR_OFFSET]
 
 
@@ -30,6 +30,11 @@ orr   r1,   RCC_CR_PLL1ON
 str   r1,   [r0, RCC_CR_OFFSET]
 mov   r2,   RCC_CR_PLL1RDY
 bl    .rcc_cr_rdy
+
+
+@ Set HPRE
+mov   r1,   RCC_D1CFGR_HPRE_2
+str   r1,   [r0, RCC_D1CFGR_OFFSET]
 
 
 @ Configure MCO2 and SW
