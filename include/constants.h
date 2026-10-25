@@ -1,4 +1,4 @@
-#define TIMER_1_MS  (392 * 1000 - 1)
+#define TIMER_1_MS  (384 * 1000 - 1)
 
 /* Button */
 #define BUTTON_STATE_NULL   -1
