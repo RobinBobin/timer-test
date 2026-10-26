@@ -4,6 +4,7 @@ cpsid   i
 #include "./init/pwr.S"
 #include "./init/flash.S"
 #include "./init/rcc.S"
+#include "./init/systick.S"
 
 #include "./init/gpio.S"
 #include "./init/mpu.S"
