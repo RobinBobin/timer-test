@@ -11,15 +11,17 @@ str   r1,   [r0],   4
 
 @ TDES2
 mov32   r1,   ETH_DMA_TDES2_PACK(
-                ETH_DMA_TDES2_IOC_ENABLE,
+                ETH_DMA_TDES2_IOC_DISABLE,
                 ETH_DMA_TDES2_TTS_DISABLE,
                 0,  // B2L
                 60  // B1L
               )
 str     r1,   [r0],   4
 
+dmb
+
 @ TDES3
-mov   r1,   ETH_DMA_TDES3_OWN
+mov   r1,   0xB0000000
 str   r1,   [r0],   4
 
 @
@@ -158,10 +160,10 @@ strb  r1,   [r0],   1
 mov   r1,   26
 strb  r1,   [r0],   1
 
-mov   r1,   0x39
+mov   r1,   0
 strb  r1,   [r0],   1
 
-mov   r1,   0xC9
+mov   r1,   0
 strb  r1,   [r0],   1
 
 mov   r1,   1

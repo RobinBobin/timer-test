@@ -8,3 +8,5 @@
 #include "registers/scb.h"
 #include "registers/syscfg.h"
 #include "registers/syst.h"
+
+#define ETH_MACMDIOAR_CR  ETH_MACMDIOAR_CR_102

@@ -28,6 +28,8 @@ SECTIONS {
   } > FLASH1
 
   .eth-section (NOLOAD) : {
+    . = ALIGN(32);
+
     ETH_SECTION_ADDRESS = .;
 
     . += LENGTH(ETH_SECTION);
@@ -42,5 +44,7 @@ SECTIONS {
     );
 
     ETH_MPU_RASR_SIZE = ETH_MPU_RASR_SIZE - 1;
+
+    . = ALIGN(32);
   } > ETH_SECTION
 }

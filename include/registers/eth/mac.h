@@ -7,31 +7,35 @@
 #define ETH_MACCR_RESET_VALUE   0x00008000
 
 /* ETH_MACCR_IPC */
-#define ETH_MACCR_IPC_DISABLED  0
-#define ETH_MACCR_IPC_ENABLED   1
+#define ETH_MACCR_IPC_OFFSET  27
+
+#define ETH_MACCR_IPC_DISABLED  (0UL  <<  ETH_MACCR_IPC_OFFSET)
+#define ETH_MACCR_IPC_ENABLED   (1UL  <<  ETH_MACCR_IPC_OFFSET)
 
 /* ETH_MACCR_FES */
 #define ETH_MACCR_FES_OFFSET  14
 
-#define ETH_MACCR_FES_10    0
-#define ETH_MACCR_FES_100   1
+#define ETH_MACCR_FES_10    (0UL  <<  ETH_MACCR_FES_OFFSET)
+#define ETH_MACCR_FES_100   (1UL  <<  ETH_MACCR_FES_OFFSET)
 
 /* ETH_MACCR_DM */
 #define ETH_MACCR_DM_OFFSET   13
 
-#define ETH_MACCR_DM_FULL   1
-#define ETH_MACCR_DM_HALF   0
+#define ETH_MACCR_DM_FULL   (1UL  <<  ETH_MACCR_DM_OFFSET)
+#define ETH_MACCR_DM_HALF   (0UL  <<  ETH_MACCR_DM_OFFSET)
 
 /* ETH_MACCR_TE */
-#define ETH_MACCR_TX_DISABLED   0
-#define ETH_MACCR_TX_ENABLED    1
+#define ETH_MACCR_TE_OFFSET   1
+
+#define ETH_MACCR_TX_DISABLED   (0UL  <<  ETH_MACCR_TE_OFFSET)
+#define ETH_MACCR_TX_ENABLED    (1UL  <<  ETH_MACCR_TE_OFFSET)
 
 /* ETH_MACCR_PACK */
 #define ETH_MACCR_PACK(IPC, TE)   \
   (                               \
-      ETH_MACCR_RESET_VALUE       \
-    | ((IPC)  <<  27)             \
-    | ((TE)   <<  1)              \
+    ETH_MACCR_RESET_VALUE         \
+      | (IPC)                     \
+      | (TE)                      \
   )
 
 ///////////////////////////////////////////////////////////////////////////////

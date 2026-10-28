@@ -1,5 +1,15 @@
 ///////////////////////////////////////////////////////////////////////////////
 
+/* LAN8742A_BCR */
+#define LAN8742A_BCR  0L
+
+/* LAN8742A_BCR_RESET */
+#define LAN8742A_BCR_RESET_OFFSET   15
+
+#define LAN8742A_BCR_RESET  (1UL << LAN8742A_BCR_RESET_OFFSET)
+
+///////////////////////////////////////////////////////////////////////////////
+
 /* LAN8742A_BSR */
 #define LAN8742A_BSR  1UL
 
