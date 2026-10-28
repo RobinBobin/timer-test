@@ -21,6 +21,12 @@ SECTIONS {
     . = ALIGN(4);
   } > VECTOR_HANDLERS
 
+  .flash1 : {
+    . = ALIGN(4);
+    *(.flash1)
+    . = ALIGN(4);
+  } > FLASH1
+
   .eth-section (NOLOAD) : {
     ETH_SECTION_ADDRESS = .;
 
