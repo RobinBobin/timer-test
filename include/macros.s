@@ -5,7 +5,7 @@
 
 
 @ Wait for SysTick
-.macro wait, label
+.macro waitsyst, label
   ldr   r2,     [r8,  SYST_CSR_OFFSET]
   tst   r2,     SYST_CSR_COUNTFLAG
   beq   \label

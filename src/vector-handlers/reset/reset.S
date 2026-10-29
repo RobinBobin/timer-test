@@ -17,7 +17,7 @@ Reset_Handler:
   str   r1,   [r8, SYST_CVR_OFFSET]
 
 .main_loop:
-  wait  .main_loop
+  waitsyst  .main_loop
 
   #include "./inc/main-loop.S"
 

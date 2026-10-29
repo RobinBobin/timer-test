@@ -26,7 +26,7 @@ delay:
 
   @ Wait
   .sleep_body:
-    wait  .sleep_body
+    waitsyst  .sleep_body
 
     sub   r1,   1
     cmp   r1,   0
