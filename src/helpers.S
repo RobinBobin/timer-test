@@ -6,12 +6,12 @@
 #include "macros.s"
 
 .section .flash1, "ax"
-.thumb_func
 
 @ 
 @ Delay for r1 millis
 @ 
 
+.thumb_func
 delay:
   @ Exit if r1 is 0
   cmp   r1,   0
