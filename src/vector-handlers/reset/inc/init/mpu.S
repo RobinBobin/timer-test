@@ -5,7 +5,7 @@ mov   r1,   MPU_CTRL_PACK(
               MPU_CTRL_PRIVDEF_ENABLE,
               MPU_CTRL_ENABLE
             )
-str   r1,   [r0, MPU_CTRL_ENABLE_OFFSET]
+str   r1,   [r0, MPU_CTRL_OFFSET]
 
 @ 
 @ ETH_SECTION
