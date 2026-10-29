@@ -1,4 +1,4 @@
-mov32   r0,   ETH_SECTION_ADDRESS
+mov32   r0,   ETH_TDES_SECTION_ADDRESS
 
 @ TDES0
 mov   r1,   r0
@@ -6,15 +6,15 @@ add   r1,   TX_BUFFER
 str   r1,   [r0],   4
 
 @ TDES1
-mov   r1,   0
+add   r1,   42
 str   r1,   [r0],   4
 
 @ TDES2
 mov32   r1,   ETH_DMA_TDES2_PACK(
                 ETH_DMA_TDES2_IOC_DISABLE,
                 ETH_DMA_TDES2_TTS_DISABLE,
-                0,  // B2L
-                60  // B1L
+                18,   // B2L
+                42    // B1L
               )
 str     r1,   [r0],   4
 
@@ -166,40 +166,40 @@ strb  r1,   [r0],   1
 mov   r1,   0
 strb  r1,   [r0],   1
 
-mov   r1,   1
+mov   r1,   10
 strb  r1,   [r0],   1
 
-mov   r1,   2
+mov   r1,   20
 strb  r1,   [r0],   1
 
-mov   r1,   3
+mov   r1,   30
 strb  r1,   [r0],   1
 
-mov   r1,   4
+mov   r1,   40
 strb  r1,   [r0],   1
 
-mov   r1,   5
+mov   r1,   50
 strb  r1,   [r0],   1
 
-mov   r1,   6
+mov   r1,   60
 strb  r1,   [r0],   1
 
-mov   r1,   7
+mov   r1,   70
 strb  r1,   [r0],   1
 
-mov   r1,   8
+mov   r1,   80
 strb  r1,   [r0],   1
 
-mov   r1,   9
+mov   r1,   90
 strb  r1,   [r0],   1
 
-mov   r1,   9
+mov   r1,   90
 strb  r1,   [r0],   1
 
-mov   r1,   8
+mov   r1,   80
 strb  r1,   [r0],   1
 
-mov   r1,   7
+mov   r1,   70
 strb  r1,   [r0],   1
 
 mov   r1,   6
