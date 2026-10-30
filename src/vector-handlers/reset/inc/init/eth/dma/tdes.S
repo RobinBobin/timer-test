@@ -1,20 +1,19 @@
 mov32   r0,   ETH_TDES_SECTION_ADDRESS
 
 @ TDES0
-mov   r1,   r0
-add   r1,   TX_BUFFER
-str   r1,   [r0],   4
+mov32   r1,   ETH_TBUF_SECTION_ADDRESS
+str     r1,   [r0],   4
 
 @ TDES1
-add   r1,   42
+add   r1,   0
 str   r1,   [r0],   4
 
 @ TDES2
 mov32   r1,   ETH_DMA_TDES2_PACK(
                 ETH_DMA_TDES2_IOC_DISABLE,
                 ETH_DMA_TDES2_TTS_DISABLE,
-                18,   // B2L
-                42    // B1L
+                0,  // B2L
+                60  // B1L
               )
 str     r1,   [r0],   4
 
@@ -23,6 +22,9 @@ dmb
 @ TDES3
 mov   r1,   0xB0000000
 str   r1,   [r0],   4
+
+
+mov32   r0,   ETH_TBUF_SECTION_ADDRESS
 
 @
 @ Ethernet header
@@ -217,7 +219,7 @@ strb  r1,   [r0],   1
 mov   r1,   2
 strb  r1,   [r0],   1
 
-mov   r1,   1
+mov   r1,   13
 strb  r1,   [r0],   1
 
 nop
