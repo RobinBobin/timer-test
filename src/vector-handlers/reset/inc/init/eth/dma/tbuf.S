@@ -145,40 +145,40 @@ movw    r2,   :lower16:(ETH_TDES_COUNT)
   mov   r1,   0
   strb  r1,   [r0],   1
 
-  mov   r1,   10
+  mov   r1,   0x10
   strb  r1,   [r0],   1
 
-  mov   r1,   20
+  mov   r1,   0x20
   strb  r1,   [r0],   1
 
-  mov   r1,   30
+  mov   r1,   0x30
   strb  r1,   [r0],   1
 
-  mov   r1,   40
+  mov   r1,   0x40
   strb  r1,   [r0],   1
 
-  mov   r1,   50
+  mov   r1,   0x50
   strb  r1,   [r0],   1
 
-  mov   r1,   60
+  mov   r1,   0x60
   strb  r1,   [r0],   1
 
-  mov   r1,   70
+  mov   r1,   0x70
   strb  r1,   [r0],   1
 
-  mov   r1,   80
+  mov   r1,   0x80
   strb  r1,   [r0],   1
 
-  mov   r1,   90
+  mov   r1,   0x90
   strb  r1,   [r0],   1
 
-  mov   r1,   90
+  mov   r1,   0x90
   strb  r1,   [r0],   1
 
-  mov   r1,   80
+  mov   r1,   0x80
   strb  r1,   [r0],   1
 
-  mov   r1,   70
+  mov   r1,   0x70
   strb  r1,   [r0],   1
 
   mov   r1,   6
