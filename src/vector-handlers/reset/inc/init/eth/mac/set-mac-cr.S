@@ -5,7 +5,7 @@ mov32   r1,   ETH_MACMDIOAR_PACK(
                 ETH_MACMDIOAR_GOC_READ
               )
 str     r1,   [r0, ETH_MACMDIOAR_OFFSET]
-bl      .mac_configuration_wait_mii
+bl      .mac_wait_mii
 
 @ to get ...
 ldr   r1,   [r0, ETH_MACMDIODR_OFFSET]
@@ -27,4 +27,4 @@ orr   r1,   r2
 orr   r1,   r3
 str   r1,   [r0, ETH_MACCR_OFFSET]
 
-b     .mac_configuration_end
+b     .mac_end

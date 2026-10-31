@@ -1,7 +1,3 @@
-#include "dma/tdes.S"
-#include "dma/tbuf.S"
-
-
 @ Set Tx ring length
 mov32   r0,   ETH_DMACTXRLR
 mov     r1,   ETH_DMA_PREPARE_CDRL(4)
@@ -82,3 +78,4 @@ str     r1,   [r0]
   ldr     r1,   [r0]
 
   b       .dma_wait_tdes3
+  
