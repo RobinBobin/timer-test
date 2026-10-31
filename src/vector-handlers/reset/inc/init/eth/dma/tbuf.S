@@ -201,7 +201,10 @@ movw    r2,   :lower16:(ETH_TDES_COUNT)
 
 
   @ Shift r0 to hold the next tbuf address
-  add   r0,   1988
+  movw  r3,   :lower16:(ETH_TBUF_SIZE)
+  movw  r4,   :lower16:(ETH_TDATA_SIZE)
+  sub   r3,   r4
+  add   r0,   r3
 
 
   @ Process next buffer

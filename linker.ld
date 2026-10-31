@@ -1,7 +1,7 @@
 ENTRY(Reset_Handler)
 
-/* ethernet frame size + DMA padding + power of 2 padding */
-ETH_TBUF_SIZE   =   1514 + 22 + 512;
+ETH_TDATA_SIZE  =   60;
+ETH_TBUF_SIZE   =   1 << LOG2CEIL(14 + 20 + 8 + ETH_TDATA_SIZE);
 
 ETH_TDES_COUNT          =   4;
 ETH_TDES_SECTION_SIZE   =   ETH_TDES_COUNT * 16;
