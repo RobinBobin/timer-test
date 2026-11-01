@@ -18,7 +18,7 @@ strb  r1,   [r0],   1
 
 
 @ Total Length
-mov     r1,   46
+movw    r1,   :lower16:(ETH_TIP_PACKET_SIZE)
 rev16   r1,   r1
 strh    r1,   [r0],   2
 

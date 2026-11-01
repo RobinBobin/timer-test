@@ -11,7 +11,7 @@ strh    r1,   [r0],   2
 
 
 @ Length
-mov     r1,   26
+movw    r1,   :lower16:(ETH_TUDP_PACKET_SIZE)
 rev16   r1,   r1
 strh    r1,   [r0],   2
 
