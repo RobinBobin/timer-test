@@ -1,6 +1,11 @@
 mov32   r0,   ETH_TBUF_SECTION_ADDRESS
 movw    r2,   :lower16:(ETH_TDES_COUNT)
 
+@ Calculate the next tbuf offset
+movw  r3,   :lower16:(ETH_TBUF_SIZE)
+movw  r4,   :lower16:(ETH_TETHERNET_FRAME_SIZE)
+sub   r3,   r4
+
 
 .dma_fill_tbuf:
   #include "tbuf/ethernet.S"
@@ -9,10 +14,7 @@ movw    r2,   :lower16:(ETH_TDES_COUNT)
   #include "tbuf/data.S"
 
 
-  @ Shift r0 to hold the next tbuf address
-  movw  r3,   :lower16:(ETH_TBUF_SIZE)
-  movw  r4,   :lower16:(ETH_TDATA_SIZE)
-  sub   r3,   r4
+  @ Move r0 to the next tbuf address
   add   r0,   r3
 
 
