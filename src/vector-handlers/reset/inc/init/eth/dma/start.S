@@ -65,9 +65,9 @@ mov32   r0,   ETH_DMACTXDTPR
     bne   .dma_loop
 
 
-    @ Set it again
-    mov   r1,   0xB0000000
-    str   r1,   [r2, r5]
+    @ Reinit TDES3
+    mov32   r1,   ETH_DMA_TDES3
+    str     r1,   [r2, r5]
 
 
     @ Decrement and check the iteration counter

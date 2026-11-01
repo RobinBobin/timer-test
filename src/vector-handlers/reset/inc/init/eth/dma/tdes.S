@@ -29,8 +29,8 @@ movw    r4,   :lower16:(ETH_TBUF_SIZE)
 
 
   @ TDES3
-  mov   r1,   0xB0000000
-  str   r1,   [r0],   4
+  mov32   r1,   ETH_DMA_TDES3
+  str     r1,   [r0],   4
 
 
   @ Shift r2 to hold the next tbuf address

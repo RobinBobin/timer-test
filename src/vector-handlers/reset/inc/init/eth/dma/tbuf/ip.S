@@ -45,7 +45,7 @@ strb  r1,   [r0],   1
 
 
 @ Header Checksum
-mov     r1,   0xb96b
+mov     r1,   0
 rev16   r1,   r1
 strh    r1,   [r0],   2
 

@@ -12,9 +12,17 @@
 #define ETH_MTLTXQOMR_OFFSET  0x0D00
 #define ETH_MTLTXQOMR         (ETH_BASE + ETH_MTLTXQOMR_OFFSET)
 
+
 /* ETH_MTLTXQOMR_TQS */
 #define ETH_MTLTXQOMR_TQS_OFFSET  16
 #define ETH_MTLTXQOMR_TQS_MASK    0x07
+
+
+/* ETH_MTLTXQOMR_TSF */
+#define ETH_MTLTXQOMR_TSF_OFFSET  1
+
+#define ETH_MTLTXQOMR_TSF_ENABLED   (1UL  <<  ETH_MTLTXQOMR_TSF_OFFSET)
+#define ETH_MTLTXQOMR_TSF_DISABLED  (0UL  <<  ETH_MTLTXQOMR_TSF_OFFSET)
 
 ///////////////////////////////////////////////////////////////////////////////
 

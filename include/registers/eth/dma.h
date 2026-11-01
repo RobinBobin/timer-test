@@ -231,4 +231,30 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 /* ETH_DMA_TDES3_OWN */
-#define ETH_DMA_TDES3_OWN   (1 << 31)
+#define ETH_DMA_TDES3_OWN   (1UL << 31)
+
+
+/* ETH_DMA_TDES3_FD */
+#define ETH_DMA_TDES3_FD  (1UL << 29)
+
+
+/* ETH_DMA_TDES3_LD */
+#define ETH_DMA_TDES3_LD  (1UL << 28)
+
+
+/* ETH_DMA_TDES3_CPC */
+#define ETH_DMA_TDES3_CPC_OFFSET  26
+
+#define ETH_DMA_TDES3_CPC_CRC_PAD_INSERT  (0UL  <<  ETH_DMA_TDES3_CPC_OFFSET)
+#define ETH_DMA_TDES3_CPC_CRC_INSERT      (1UL  <<  ETH_DMA_TDES3_CPC_OFFSET)
+#define ETH_DMA_TDES3_CPC_DISABLED        (2UL  <<  ETH_DMA_TDES3_CPC_OFFSET)
+#define ETH_DMA_TDES3_CPC_CRC_REPlACE     (3UL  <<  ETH_DMA_TDES3_CPC_OFFSET)
+
+
+/* ETH_DMA_TDES3_CIC */
+#define ETH_DMA_TDES3_CIC_OFFSET  16
+
+#define ETH_DMA_TDES3_CIC_DISABLED    (0UL  <<  ETH_DMA_TDES3_CIC_OFFSET)
+#define ETH_DMA_TDES3_CIC_IP          (1UL  <<  ETH_DMA_TDES3_CIC_OFFSET)
+#define ETH_DMA_TDES3_CIC_NO_PSEUDO   (2UL  <<  ETH_DMA_TDES3_CIC_OFFSET)
+#define ETH_DMA_TDES3_CIC_ALL         (3UL  <<  ETH_DMA_TDES3_CIC_OFFSET)
