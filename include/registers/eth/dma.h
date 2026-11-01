@@ -202,20 +202,30 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 /* ETH_DMA_TDES2_IOC */
-#define ETH_DMA_TDES2_IOC_ENABLE    1
-#define ETH_DMA_TDES2_IOC_DISABLE   0
+#define ETH_DMA_TDES2_IOC_OFFSET  31
+
+#define ETH_DMA_TDES2_IOC_ENABLE    (1UL  <<  ETH_DMA_TDES2_IOC_OFFSET)
+#define ETH_DMA_TDES2_IOC_DISABLE   (0UL  <<  ETH_DMA_TDES2_IOC_OFFSET)
 
 /* ETH_DMA_TDES2_TTS */
-#define ETH_DMA_TDES2_TTS_ENABLE    1
-#define ETH_DMA_TDES2_TTS_DISABLE   0
+#define ETH_DMA_TDES2_TTS_OFFSET  30
+
+#define ETH_DMA_TDES2_TTS_ENABLE    (1UL  <<  ETH_DMA_TDES2_TTS_OFFSET)
+#define ETH_DMA_TDES2_TTS_DISABLE   (0UL  <<  ETH_DMA_TDES2_TTS_OFFSET)
+
+/* ETH_DMA_TDES2_B2L */
+#define ETH_DMA_TDES2_B2L_OFFSET  16
+
+/* ETH_DMA_TDES2_HL_OR_B1L */
+#define ETH_DMA_TDES2_HL_OR_B1L_OFFSET  0
 
 /* ETH_DMA_TDES2_PACK */
 #define ETH_DMA_TDES2_PACK(IOC, TTSE, B2L, HL_OR_B1L)   \
-  (                           \
-      ((IOC)        <<  31)   \
-    | ((TTSE)       <<  30)   \
-    | ((B2L)        <<  16)   \
-    | ((HL_OR_B1L)  <<  0)    \
+  (                                                     \
+    (IOC)                                               \
+      | (TTSE)                                          \
+      | (B2L)                                           \
+      | (HL_OR_B1L)                                     \
   )
 
 ///////////////////////////////////////////////////////////////////////////////

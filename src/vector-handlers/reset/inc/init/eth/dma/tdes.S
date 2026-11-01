@@ -14,14 +14,18 @@ movw    r4,   :lower16:(ETH_TBUF_SIZE)
   str   r1,   [r0],   4
 
 
+  @
   @ TDES2
-  mov32   r1,   ETH_DMA_TDES2_PACK(
-                  ETH_DMA_TDES2_IOC_DISABLE,
-                  ETH_DMA_TDES2_TTS_DISABLE,
-                  0,  // B2L
-                  60  // B1L
-                )
-  str     r1,   [r0],   4
+  @
+
+  @ B1L
+  movw  r1,   :lower16:(ETH_TETHERNET_FRAME_SIZE)
+  lsl   r1,   ETH_DMA_TDES2_HL_OR_B1L_OFFSET
+
+  @ Others
+  orr   r1,   ETH_DMA_TDES2_IOC_DISABLE
+  orr   r1,   ETH_DMA_TDES2_TTS_DISABLE
+  str   r1,   [r0],   4
 
 
   @ TDES3
