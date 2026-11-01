@@ -41,14 +41,14 @@ server.on('error', err => {
 })
 
 // Периодический отчёт, чтобы не тормозить горячий путь.
-// setInterval(() => {
-//   if (packets) {
-//     console.log(`пакетов: ${packets}, байт: ${bytes}`)
+setInterval(() => {
+  if (packets) {
+    console.log(`пакетов: ${packets}, байт: ${bytes}`)
 
-//     packets = 0
-//     bytes = 0
-//   }
-// }, 1000).unref()
+    packets = 0
+    bytes = 0
+  }
+}, 1000).unref()
 
 let shuttingDown = false
 
@@ -61,7 +61,8 @@ function shutdown(signal) {
 
   console.log(`\nПолучен ${signal}, останавливаем сервер...`)
 
-  console.log(`пакетов: ${totalPackets}, байт: ${totalBytes}`)
+  console.log(`пакетов: ${packets}, байт: ${bytes}`)
+  console.log(`всего пакетов: ${totalPackets}, всего байт: ${totalBytes}`)
 
   // Таймаут на случай, если close() зависнет
   setTimeout(() => {
