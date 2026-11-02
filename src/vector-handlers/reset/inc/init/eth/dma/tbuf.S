@@ -2,7 +2,7 @@ mov32   r0,   ETH_TBUF_SECTION_ADDRESS
 movw    r2,   :lower16:(ETH_TDES_COUNT)
 
 @ Calculate the next tbuf offset
-movw  r3,   :lower16:(ETH_TBUF_SIZE)
+movw  r3,   :lower16:(ETH_TOTAL_TBUF_SIZE)
 movw  r4,   :lower16:(ETH_TETHERNET_FRAME_SIZE)
 sub   r3,   r4
 

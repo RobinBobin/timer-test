@@ -1,3 +1,7 @@
+@ Move r0 to point to buffer2
+movw    r1,   :lower16:(ETH_TBUF2_OFFSET)
+
+
 mov   r1,   0x10
 strb  r1,   [r0],   1
 

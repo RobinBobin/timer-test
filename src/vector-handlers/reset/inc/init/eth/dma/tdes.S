@@ -1,7 +1,9 @@
 mov32   r0,   ETH_TDES_SECTION_ADDRESS
 mov32   r2,   ETH_TBUF_SECTION_ADDRESS
 movw    r3,   :lower16:(ETH_TDES_COUNT)
-movw    r4,   :lower16:(ETH_TBUF_SIZE)
+movw    r4,   :lower16:(ETH_TOTAL_TBUF_SIZE)
+movw    r5,   :lower16:(ETH_TOTAL_HEADER_SIZE)
+movw    r6,   :lower16:(ETH_TBUF2_OFFSET)
 
 
 .dma_fill_tdes:
@@ -10,7 +12,9 @@ movw    r4,   :lower16:(ETH_TBUF_SIZE)
 
 
   @ TDES1
-  mov   r1,   0
+  mov   r1,   r2
+  add   r1,   r5
+  add   r1,   r6
   str   r1,   [r0],   4
 
 
@@ -19,8 +23,13 @@ movw    r4,   :lower16:(ETH_TBUF_SIZE)
   @
 
   @ B1L
-  movw  r1,   :lower16:(ETH_TETHERNET_FRAME_SIZE)
+  mov   r1,   r5
   lsl   r1,   ETH_DMA_TDES2_HL_OR_B1L_OFFSET
+
+  @ B2L
+  movw  r7,   :lower16:(ETH_TDATA_SIZE)
+  lsl   r7,   ETH_DMA_TDES2_B2L_OFFSET
+  orr   r1,   r7
 
   @ Others
   orr   r1,   ETH_DMA_TDES2_IOC_DISABLE
