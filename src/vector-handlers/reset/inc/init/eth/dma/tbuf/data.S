@@ -51,3 +51,5 @@ strb  r1,   [r0],   1
 
 mov   r1,   12
 strb  r1,   [r0],   1
+
+add   r0,   1454
