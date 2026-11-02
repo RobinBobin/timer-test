@@ -220,12 +220,12 @@
 #define ETH_DMA_TDES2_HL_OR_B1L_OFFSET  0
 
 /* ETH_DMA_TDES2_PACK */
-#define ETH_DMA_TDES2_PACK(IOC, TTSE, B2L, HL_OR_B1L)   \
-  (                                                     \
-    (IOC)                                               \
-      | (TTSE)                                          \
-      | (B2L)                                           \
-      | (HL_OR_B1L)                                     \
+#define ETH_DMA_TDES2_PACK(IOC, TTSE, B2L, HL_OR_B1L)     \
+  (                                                       \
+    (IOC)                                                 \
+      | (TTSE)                                            \
+      | ((B2L)        <<  ETH_DMA_TDES2_B2L_OFFSET)       \
+      | ((HL_OR_B1L)  <<  ETH_DMA_TDES2_HL_OR_B1L_OFFSET  \
   )
 
 ///////////////////////////////////////////////////////////////////////////////
